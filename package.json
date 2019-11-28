@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "web-ext run"
+    "dev": "web-ext run --firefox='/mnt/c/Program Files/Firefox Developer Edition/firefox.exe'"
   },
   "dependencies": {},
   "devDependencies": {
