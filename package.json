@@ -1,0 +1,13 @@
+{
+  "name": "go_examine_browser",
+  "version": "1.0.0",
+  "description": "A Browser Extension to Interact with the Go Examine Fake News Training API",
+  "main": "index.js",
+  "repository": "https://github.com/FraserTooth/go_examine_browser.git",
+  "author": "Fraser Tooth <frasertooth@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "web-ext run"
+  }
+}
