@@ -1,5 +1,3 @@
-//var browser = require("webextension-polyfill/dist/browser-polyfill.min");
-
 const goExamineApiUrl =
   "https://us-central1-graphite-bliss-260202.cloudfunctions.net/AnalyseWebpage";
 
@@ -13,27 +11,25 @@ const JSONdata = {
   url: currentUrl
 }
 
-// window.fetch(goExamineApiUrl, {
-//   method: "POST",
-//   mode: 'same-origin', // no-cors, *cors, same-origin,
-//   headers: {
-//     "content-type": "application/json"
-//   },
-//   body: {
-//     url: currentUrl
-//   }
-// })
-//   .then(response => {
-//     console.log(response);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-
 
 function handleResponse(message) {
   console.log({ message });
-  //document.querySelectorAll("p")[0].innerText = JSON.stringify(message)
+  const pageParagraphs = document.querySelectorAll("p")
+
+  message.problemWords[0].locations.forEach(location => {
+
+    //Create Highlight
+    const newMark = `<mark>think</mark>`
+
+    //Copy Existing Text
+    const existingText = pageParagraphs[location].innerText;
+
+    //Create Replacement Text
+    const newText = existingText.replace(/think/ig, newMark);
+
+    //Replace Text
+    pageParagraphs[location].innerHTML = newText
+  })
 }
 
 function handleError(error) {
@@ -48,16 +44,3 @@ const sending = browser.runtime.sendMessage(
   })
 
 sending.then(handleResponse)
-
-
-
-
-
-// function notifyBackgroundPage(e) {
-//     var sending = browser.runtime.sendMessage({
-//       greeting: "Greeting from the content script"
-//     });
-//     sending.then(handleResponse, handleError);
-//   }
-
-// window.addEventListener("click", notifyBackgroundPage);
