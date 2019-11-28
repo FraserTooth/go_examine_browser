@@ -9,5 +9,9 @@
   "private": true,
   "scripts": {
     "dev": "web-ext run"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "webextension-polyfill": "^0.5.0"
   }
 }
