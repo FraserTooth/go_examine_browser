@@ -9,9 +9,15 @@ function handleMessage(request, sender, sendResponse) {
     },
     body: request.data
   })
-    .then(response => response.json())
-    .then(response => sendResponse(response))
+    .then(res => res.json())
+    .then(res => {
+      console.log(typeof res)
+      console.log(res)
+      sendResponse(res);
+    }
+    )
     .catch(error => console.log('Error:', error));
+  return true;
 }
 
 // background-script.js

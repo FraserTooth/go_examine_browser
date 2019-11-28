@@ -32,7 +32,8 @@ const JSONdata = {
 
 
 function handleResponse(message) {
-  console.log(`Message from the background script:  ${message}`);
+  console.log({ message });
+  //document.querySelectorAll("p")[0].innerText = JSON.stringify(message)
 }
 
 function handleError(error) {
@@ -40,13 +41,13 @@ function handleError(error) {
 }
 
 
-browser.runtime.sendMessage(
+const sending = browser.runtime.sendMessage(
   {
     data: JSON.stringify(JSONdata),
     url: goExamineApiUrl
   })
-  .then(handleResponse, handleError)
-  .catch(error => console.log(error))
+
+sending.then(handleResponse)
 
 
 
