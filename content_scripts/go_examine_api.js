@@ -35,7 +35,7 @@ function handleResponse(response) {
         const newMark =
           ` <div class="goExamineTip">${match}
             <span class="goExamineTipText">
-              <h4>Go Examine</h4>
+              <h4 class="goExamineTitle">Go Examine</h4>
               ${problemWord.message}
              </span>
            </div>`

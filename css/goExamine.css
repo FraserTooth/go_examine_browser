@@ -4,6 +4,10 @@
     border-bottom: 1px dotted black;
     background-color: greenyellow;
 }
+
+.goExamineTitle {
+    color: #fff;
+}
   
 .goExamineTip .goExamineTipText {
     visibility: hidden;
