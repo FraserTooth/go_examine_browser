@@ -12,23 +12,32 @@ const JSONdata = {
 }
 
 
-function handleResponse(message) {
-  console.log({ message });
+function handleResponse(response) {
+  console.log({ response });
   const pageParagraphs = document.querySelectorAll("p")
+  //For Each Problem Word
+  response.problemWords.forEach(problemWord => {
 
-  message.problemWords[0].locations.forEach(location => {
+    //Set Up Regex
+    const regex = new RegExp(problemWord.word, "ig")
 
-    //Create Highlight
-    const newMark = `<mark>think</mark>`
+    //Create Element
+    const newMark =
+      `<div class="goExamineTip">${problemWord.word}
+        <span class="goExamineTipText">${problemWord.message}</span>
+      </div>`
 
-    //Copy Existing Text
-    const existingText = pageParagraphs[location].innerText;
+    problemWord.locations.forEach(location => {
+      //Copy Existing Text
+      const existingText = pageParagraphs[location].innerText;
 
-    //Create Replacement Text
-    const newText = existingText.replace(/think/ig, newMark);
+      //Create Replacement Text
+      const newText = existingText.replace(regex, newMark);
 
-    //Replace Text
-    pageParagraphs[location].innerHTML = newText
+      //Replace Text
+      pageParagraphs[location].innerHTML = newText
+    })
+
   })
 }
 

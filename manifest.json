@@ -26,6 +26,9 @@
       "matches": [
         "*://*/*"
       ],
+      "css": [
+        "/css/goExamine.css"
+      ],
       "js": [
         "/content_scripts/go_examine_api.js"
       ]

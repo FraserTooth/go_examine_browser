@@ -1,0 +1,24 @@
+.goExamineTip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    background-color: greenyellow;
+}
+  
+.goExamineTip .goExamineTipText {
+    visibility: hidden;
+    width: 200px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+  
+.goExamineTip:hover .goExamineTipText {
+    visibility: visible;
+}
