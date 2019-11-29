@@ -21,21 +21,31 @@ function handleResponse(response) {
     //Set Up Regex
     const regex = new RegExp(problemWord.word, "ig")
 
-    //Create Element
-    const newMark =
-      `<div class="goExamineTip">${problemWord.word}
-        <span class="goExamineTipText">${problemWord.message}</span>
-      </div>`
-
     problemWord.locations.forEach(location => {
       //Copy Existing Text
       const existingText = pageParagraphs[location].innerText;
 
-      //Create Replacement Text
-      const newText = existingText.replace(regex, newMark);
+      //Find Locations
+      let matches = [...existingText.matchAll(regex)];
 
-      //Replace Text
-      pageParagraphs[location].innerHTML = newText
+      matches.forEach(match => {
+        const updatedText = pageParagraphs[location].innerText;
+
+        //Create Element
+        const newMark =
+          ` <div class="goExamineTip">${match}
+            <span class="goExamineTipText">
+              <h4>Go Examine</h4>
+              ${problemWord.message}
+             </span>
+           </div>`
+
+        //Create Replacement Text
+        const newText = updatedText.replace(match, newMark);
+
+        //Replace Text
+        pageParagraphs[location].innerHTML = newText
+      })
     })
 
   })
